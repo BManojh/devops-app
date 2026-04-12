@@ -8,10 +8,10 @@ pipeline {
     stages {
 
         stage('Clone Code') {
-            steps {
-                git 'https://github.com/BManojh/devops-app.git'
-            }
-        }
+    steps {
+        git branch: 'main', url: 'https://github.com/BManojh/devops-app.git'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
