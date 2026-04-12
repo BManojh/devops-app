@@ -7,15 +7,9 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-    steps {
-        git branch: 'main', url: 'https://github.com/BManojh/devops-app.git'
-    }
-}
-
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE .'
+                bat 'docker build -t %DOCKER_IMAGE% .'
             }
         }
 
@@ -26,15 +20,15 @@ pipeline {
                     usernameVariable: 'USER',
                     passwordVariable: 'PASS'
                 )]) {
-                    sh 'docker login -u $USER -p $PASS'
-                    sh 'docker push $DOCKER_IMAGE'
+                    bat 'docker login -u %USER% -p %PASS%'
+                    bat 'docker push %DOCKER_IMAGE%'
                 }
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f deployment.yaml'
+                bat 'kubectl apply -f deployment.yaml'
             }
         }
     }
