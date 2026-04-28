@@ -6,38 +6,36 @@
 </head>
 <body>
 
-<div class="container">
-    <h2>💰 Expense Tracker</h2>
+<header>
+    <h1>💰 Expense Tracker</h1>
+    <nav>
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('add')">Add Expense</button>
+        <button onclick="showSection('report')">Report</button>
+    </nav>
+</header>
 
-    <div class="balance-box">
-        <h3>Balance</h3>
-        <h1 id="balance">₹0</h1>
-    </div>
+<!-- HOME -->
+<section id="home" class="active">
+    <h2>Dashboard</h2>
+    <h3>Total Balance: ₹<span id="balance">0</span></h3>
+    <div id="list"></div>
+</section>
 
-    <div class="summary">
-        <div class="income">
-            <h4>Income</h4>
-            <p id="income">₹0</p>
-        </div>
-        <div class="expense">
-            <h4>Expense</h4>
-            <p id="expense">₹0</p>
-        </div>
-    </div>
-
-    <h3>Add Transaction</h3>
-
-    <input type="text" id="text" placeholder="Description">
-    <input type="number" id="amount" placeholder="Amount (+income, -expense)">
+<!-- ADD -->
+<section id="add">
+    <h2>Add Expense</h2>
+    <input id="text" placeholder="Description">
+    <input id="amount" type="number" placeholder="Amount">
     <button onclick="addTransaction()">Add</button>
+</section>
 
-    <h3>History</h3>
-
-    <input type="text" id="search" placeholder="Search..." onkeyup="filterTransactions()">
-
-    <ul id="list"></ul>
-
-</div>
+<!-- REPORT -->
+<section id="report">
+    <h2>Report</h2>
+    <p>Total Income: ₹<span id="income">0</span></p>
+    <p>Total Expense: ₹<span id="expense">0</span></p>
+</section>
 
 <script src="script.js"></script>
 </body>
