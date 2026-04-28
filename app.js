@@ -3,10 +3,10 @@ const path = require("path");
 
 const app = express();
 
-// Serve static files
+// serve static files
 app.use(express.static(__dirname));
 
-// Default route
+// correct path
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
